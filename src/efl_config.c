@@ -4,7 +4,7 @@
 static void
 _scale_set(void)
 {
-   Evas_Coord w, h, tw, th;
+   Evas_Coord w, h;
    float inch, scale = 0.0, profile_factor = 1.0;
    int dpi;
    char *s = NULL;
@@ -29,11 +29,9 @@ _scale_set(void)
 
 int main(int argc, char **argv)
 {
-   Evas_Object *win;
-
    elm_init(argc, argv);
 
-   win = elm_win_add(NULL, "config", ELM_WIN_BASIC);
+   elm_win_add(NULL, "config", ELM_WIN_BASIC);
 
    _scale_set();
 
