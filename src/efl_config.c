@@ -5,7 +5,7 @@ static void
 _scale_set(void)
 {
    Evas_Coord w, h;
-   float inch, scale = 0.0, profile_factor = 1.0;
+   float inch, scale = 0.0, saved_scale = 0.0, profile_factor = 1.0;
    int dpi;
    char *s = NULL;
 
@@ -19,12 +19,14 @@ _scale_set(void)
    else profile_factor = 0.8;
 
    scale = floor((double)dpi * profile_factor / 90.0 * 10 + 0.5) / 10;
+   saved_scale = elm_config_scale_get();
 
-   s = getenv("ELM_SCALE");
-   if (!s) elm_config_scale_set(scale);
-
-   elm_config_save();
-   elm_config_all_flush();
+   if (scale != saved_scale && !getenv("ELM_SCALE"))
+     {
+        elm_config_scale_set(scale);
+        elm_config_save();
+        elm_config_all_flush();
+     }
 }
 
 int main(int argc, char **argv)
