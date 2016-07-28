@@ -7,7 +7,6 @@ _scale_set(void)
    Evas_Coord w, h;
    float inch, scale = 0.0, saved_scale = 0.0, profile_factor = 1.0;
    int dpi;
-   char *s = NULL;
 
    ecore_wl_sync();
    dpi = ecore_wl_dpi_get();
